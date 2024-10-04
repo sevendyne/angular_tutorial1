@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HomeComponent } from './home/home.component'; // Import HomeComponent
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  imports: [HomeComponent]
 })
 export class AppComponent {
-  title = 'angular-app1';
+  title = 'Angular Day3';
+  outputMessage: string = '';
+
+  handleButtonClick(event: string) {
+    this.outputMessage = event;
+    // alert(event);
+  }
 }
