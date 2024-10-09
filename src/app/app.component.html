@@ -1,1 +1,9 @@
-<router-outlet />
+<div style="text-align:center">
+    <h1>Welcome to {{ title }}!</h1>
+  
+    <!-- HomeComponent embedded directly -->
+    <app-home [title]="title" (buttonClicked)="handleButtonClick($event)"></app-home>
+  
+    <p>{{ outputMessage }}</p>
+</div>
+  
