@@ -1,15 +1,11 @@
-<div style="text-align:center">
-    <h1> {{ title }}!</h1>
-  
-    <!-- HomeComponent embedded directly -->
-    <app-home [title]="title" (buttonClicked)="handleButtonClick($event)"></app-home>
-  
-    <p>{{ outputMessage }}</p>
+<!-- app.component.html -->
+<nav>
+  <ul>
+    <li><a routerLink="/home" routerLinkActive="active">Home Page</a></li>
+    <li><a routerLink="/counter" routerLinkActive="active">Counter App</a></li>
+  </ul>
+</nav>
 
-    <!-- Handling countChange (Two-way Binding) -->
-    <app-counter [count]="count" (countChange)="handleCountChange($event)"> </app-counter>
-  
-    <!-- Display the count from two-way binding -->
-    <p>Parent Count: {{ count }}</p>
-  </div>
-  
+<router-outlet></router-outlet> <!-- This will load the routed component -->
+
+
