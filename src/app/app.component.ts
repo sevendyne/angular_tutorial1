@@ -4,20 +4,26 @@ import { CounterComponent } from './counter/counter.component';
 
 import { RouterModule } from '@angular/router';
 
+import { SharedService } from './shared.service';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [HomeComponent, CounterComponent, RouterModule]
+  imports: [HomeComponent, CounterComponent, RouterModule, CommonModule]
 })
 export class AppComponent {
-  title = 'Hello Angular';
   outputMessage: string = '';
 
-  handleButtonClick(event: string) {
-    this.outputMessage = event;
-    alert(event);
+  constructor(private sharedService: SharedService) {}
+
+  ngOnInit() {
+    // Subscribe to the shared service message changes
+    this.sharedService.currentMessage.subscribe((message: string) => {
+      this.outputMessage = message;
+    });
   }
 
   count = 0; // Initial count for two-way binding

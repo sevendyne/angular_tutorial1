@@ -1,12 +1,14 @@
 <!-- app.component.html -->
 <nav>
-    <ul>
-      <li><a routerLink="/Home" routerLinkActive="active">Home Page</a></li>
-      <li><a routerLink="/Counter" routerLinkActive="active">Counter App</a></li>
-    </ul>
-  </nav>
-  
-  <router-outlet></router-outlet> <!-- This will load the routed component -->
-  
-  
-  
+  <ul>
+    <li><a routerLink="/home" routerLinkActive="active">Home Page</a></li>
+    <li><a routerLink="/counter" routerLinkActive="active">Counter App</a></li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet> <!-- This will load the routed component -->
+
+<!-- Optionally, display the output message from HomeComponent -->
+<div style="text-align:center" *ngIf="outputMessage">
+  <p>App Component: {{ outputMessage }}</p>
+</div>
