@@ -8,4 +8,7 @@
 
 <router-outlet></router-outlet> <!-- This will load the routed component -->
 
-
+<!-- Optionally, display the output message from HomeComponent -->
+<div style="text-align:center" *ngIf="outputMessage">
+  <p>App Component: {{ outputMessage }}</p>
+</div>

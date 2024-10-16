@@ -1,4 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { SharedService } from '../shared.service';
 
 @Component({
   standalone: true, // Declare this as standalone
@@ -7,10 +9,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  @Input() title: string = '';
-  @Output() buttonClicked: EventEmitter<string> = new EventEmitter<string>();
+  constructor(private sharedService: SharedService) {}
 
   onButtonClick() {
-    this.buttonClicked.emit('Button clicked! The current title is: ' + this.title);
+    const message = 'Button clicked by Ansif!!!';
+    // Use the shared service to update the message
+    this.sharedService.changeMessage(message);
   }
 }
