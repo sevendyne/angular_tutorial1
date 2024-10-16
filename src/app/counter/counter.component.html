@@ -1,8 +1,16 @@
-<p style="text-align: center;"> count={{count}}</p>
-<br>
-<div style="text-align: center;">
-    <button (click)="increment()" style="margin : 10px;">inrement</button>
-    <button (click)="decrement()">decrement</button>
-    <button (click)="reset()" style="margin: 10px;">reset</button>
+<div class="counter-container"> 
+    <!-- Two-way Binding -->
+    <input [(ngModel)]="count" placeholder="Set count" />
     
+    <!-- Buttons to trigger events -->
+    <div class="buttons">
+      <button (click)="increment()">Increment</button>
+      <button (click)="decrement()">Decrement</button>
+      <button (click)="reset()">Reset</button>
+    </div>
+</div>
+  
+<!-- Optionally, display the output message from HomeComponent -->
+<div style="text-align:center" *ngIf="outputMessage">
+  <p>Counter Component: {{ outputMessage }}</p>
 </div>
