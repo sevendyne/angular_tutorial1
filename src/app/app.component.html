@@ -1,9 +1,12 @@
-<div style="text-align:center">
-    <h1>Welcome to {{ title }}!</h1>
+<!-- app.component.html -->
+<nav>
+    <ul>
+      <li><a routerLink="/Home" routerLinkActive="active">Home Page</a></li>
+      <li><a routerLink="/Counter" routerLinkActive="active">Counter App</a></li>
+    </ul>
+  </nav>
   
-    <!-- HomeComponent embedded directly -->
-    <app-home [title]="title" (buttonClicked)="handleButtonClick($event)"></app-home>
+  <router-outlet></router-outlet> <!-- This will load the routed component -->
   
-    <p>{{ outputMessage }}</p>
-</div>
+  
   

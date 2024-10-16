@@ -1,0 +1,12 @@
+<div class="counter-container"> 
+    <!-- Two-way Binding -->
+    <input [(ngModel)]="count" placeholder="Set count" />
+    
+    <!-- Buttons to trigger events -->
+    <div class="buttons">
+      <button (click)="increment()">Increment</button>
+      <button (click)="decrement()">Decrement</button>
+      <button (click)="reset()">Reset</button>
+    </div>
+</div>
+  
