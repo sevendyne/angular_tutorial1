@@ -12,3 +12,12 @@
 <div style="text-align:center" *ngIf="outputMessage">
   <p>App Component: {{ outputMessage }}</p>
 </div>
+
+<!-- Applying the custom directive -->
+<!-- Applying the custom directive with text content -->
+<div class="home-container" appChangeBackgroundColor>
+  <p>{{ 'hello world from angular' | titleCase }}</p>
+</div>
+
+<h3>{{1220 | currency :'INR'}}</h3>
+

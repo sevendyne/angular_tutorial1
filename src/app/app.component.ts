@@ -7,12 +7,15 @@ import { RouterModule } from '@angular/router';
 import { SharedService } from './shared.service';
 import { CommonModule } from '@angular/common';
 
+import { ChangeBackgroundColorDirective } from './change-background-color.directive';
+import { TitleCasePipe } from './title-case.pipe'; 
+
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [HomeComponent, CounterComponent, RouterModule, CommonModule]
+  imports: [HomeComponent, CounterComponent, RouterModule, CommonModule, ChangeBackgroundColorDirective, TitleCasePipe]
 })
 export class AppComponent {
   outputMessage: string = '';
