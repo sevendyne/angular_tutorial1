@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root'  // This makes the service available application-wide
 })
 export class SharedService {
   // BehaviorSubject to hold and share data

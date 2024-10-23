@@ -1,4 +1,4 @@
-<!-- app.component.html -->
+<!-- src/app/app.component.html -->
 <nav>
   <ul>
     <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
@@ -10,6 +10,13 @@
 <router-outlet></router-outlet> <!-- This will load the routed component -->
 
 <!-- Optionally, display the output message from HomeComponent -->
-<div style="text-align:center" *ngIf="outputMessage">
+<!-- <div style="text-align:center" *ngIf="outputMessage">
   <p>App Component: {{ outputMessage }}</p>
+</div> -->
+
+<!-- Applying the custom directive with text content -->
+<!-- <div class="home-container" appChangeBackgroundColor>
+  <p>{{ 'hello world from angular' | titleCase }}</p>
 </div>
+
+<h3>{{ 1220 | currency :'INR' }}</h3> -->
