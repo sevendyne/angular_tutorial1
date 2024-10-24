@@ -1,6 +1,66 @@
-<div class="home-container"> 
-    <button (click)="onButtonClick()">Click Me</button> <!-- Button click triggers the event -->
+<!-- <div class="home-container"> 
+    <button (click)="onButtonClick()">Click Me</button>
 </div>
 <ul>
     <li *ngFor="let item of items">{{ item }}</li>
-</ul>
+</ul> -->
+
+<div class="form-container">
+  <h1>Basic Form</h1>
+  <form #myForm="ngForm" (ngSubmit)="onBasicFormSubmit(myForm)">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" ngModel required>
+      <div *ngIf="myForm.controls['username']?.invalid && myForm.controls['username']?.touched">
+        <small *ngIf="myForm.controls['username']?.errors?.['required']">Username is required.</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" ngModel required email>
+      <div *ngIf="myForm.controls['email']?.invalid && myForm.controls['email']?.touched">
+        <small *ngIf="myForm.controls['email']?.errors?.['required']">Email is required.</small>
+        <small *ngIf="myForm.controls['email']?.errors?.['email']">Invalid email format.</small>
+      </div>
+    </div>
+    <button type="submit" [disabled]="myForm.invalid">Submit</button>
+  </form>
+</div>
+
+<div class="form-container">
+  <h1>Reactive Form with Dynamic Controls</h1>
+  <form [formGroup]="reactForm" (ngSubmit)="onReactiveFormSubmit()">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input id="username" formControlName="username">
+      <div *ngIf="reactForm.get('username')?.invalid && reactForm.get('username')?.touched">
+        <small *ngIf="reactForm.get('username')?.errors?.['required']">Username is required.</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email">
+      <div *ngIf="reactForm.get('email')?.invalid && reactForm.get('email')?.touched">
+        <small *ngIf="reactForm.get('email')?.errors?.['required']">Email is required.</small>
+        <small *ngIf="reactForm.get('email')?.errors?.['email']">Invalid email format.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <h3>Dynamic Items</h3>
+      <div formArrayName="items">
+        <div *ngFor="let item of items.controls; let i = index">
+          <label for="item-{{ i }}">Item {{ i + 1 }}:</label>
+          <input [formControlName]="i" id="item-{{ i }}">
+          <button type="button" (click)="removeItem(i)">Remove</button>
+          <div *ngIf="items.at(i)?.invalid && items.at(i)?.touched">
+            <small *ngIf="items.at(i)?.errors?.['required']">Item {{ i + 1 }} is required.</small>
+          </div>
+        </div>
+      </div>
+      <button type="button" (click)="addItem()">Add Item</button>
+    </div>
+
+    <button type="submit" [disabled]="reactForm.invalid">Submit</button>
+  </form>
+</div>
