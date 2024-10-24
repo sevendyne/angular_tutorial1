@@ -18,9 +18,6 @@ import { AuthService } from './auth.service';
   imports: [HomeComponent, CounterComponent, RouterModule, CommonModule, ChangeBackgroundColorDirective, TitleCasePipe]
 })
 export class AppComponent {
-  title(title: any) {
-    throw new Error('Method not implemented.');
-  }
   outputMessage: string = '';
   count = 0; // Initial count for two-way binding
 
