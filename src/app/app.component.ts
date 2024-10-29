@@ -9,6 +9,7 @@ import { SharedService } from './shared.service';
 import { ChangeBackgroundColorDirective } from './change-background-color.directive';
 import { TitleCasePipe } from './title-case.pipe';
 import { AuthService } from './auth.service';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -20,14 +21,29 @@ import { AuthService } from './auth.service';
 export class AppComponent {
   outputMessage: string = '';
   count = 0; // Initial count for two-way binding
+  data: any[] = [];
+  errorMessage: string = '';
 
-  constructor(private sharedService: SharedService, private authService: AuthService) {}
+  constructor(private sharedService: SharedService, private authService: AuthService, private apiService: ApiService) {}
 
   ngOnInit() {
     // Subscribe to the shared service message changes
     this.sharedService.currentMessage.subscribe((message: string) => {
       this.outputMessage = message;
     });
+
+    // Fetch data from API on initialization
+    this.apiService.fetchData().subscribe(
+      {
+        next: (data) => {
+          this.data = data; // Set the data property to be used in the template
+        },
+        error: error => {
+          this.errorMessage = error; // Set the data property to be used in the template
+        },
+        complete: () => console.log('Complete')
+      }
+    );
   }
 
   // Handle count changes emitted from child (Two-way binding)

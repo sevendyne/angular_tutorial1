@@ -1,13 +1,14 @@
 <!-- src/app/app.component.html -->
-<nav>
+<!-- <nav>
   <ul>
     <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
     <li><a routerLink="/counter" routerLinkActive="active">Counter</a></li>
-    <li><a (click)="logout()">Logout</a></li> <!-- Logout button -->
+    <li><a (click)="logout()">Logout</a></li> 
   </ul>
 </nav>
 
-<router-outlet></router-outlet> <!-- This will load the routed component -->
+<router-outlet></router-outlet>  -->
+<!-- This will load the routed component -->
 
 
 <!-- Optionally, display the output message from HomeComponent -->
@@ -21,3 +22,17 @@
 </div>
 
 <h3>{{ 1220 | currency :'INR' }}</h3> -->
+
+<!-- API code -->
+<div>
+  <h1>Fetched Data:</h1>
+  <ul>
+    <li *ngFor="let item of data">
+      <h1>{{ item.title }}</h1>
+      <p>{{ item.body }}</p>
+    </li>
+  </ul>
+</div>
+
+
+<p>{{ errorMessage }}</p>

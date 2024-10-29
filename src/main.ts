@@ -4,7 +4,8 @@ import { provideRouter, Route } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { AuthComponent } from './app/auth/auth.component';
 import { AuthGuard } from './app/auth.guard';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './app/auth/auth.interceptor';
 
 const routes: Route[] = [
   { path: 'login', component: AuthComponent },
@@ -24,6 +25,6 @@ const routes: Route[] = [
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
-    provideHttpClient()
+    provideHttpClient(withInterceptors([authInterceptor]))
   ]
 }).catch((err) => console.error(err));
